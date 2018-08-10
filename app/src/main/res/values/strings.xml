@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">news</string>
+    <string name="hint_no_network">网络未连接</string>
 </resources>

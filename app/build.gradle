@@ -25,4 +25,45 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // constraint-layout
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    // BToast
+    implementation 'com.bravin.btoast:BToast:1.0.2'
+    // ButterKnife
+    implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$RXJAVA_VERSION"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.8.1"
+    // EventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    // logger
+    implementation 'com.orhanobut:logger:2.2.0'
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation('com.github.bumptech.glide:recyclerview-integration:4.7.1') {
+        // Excludes the support library because it's already included by Glide.
+        transitive = false
+    }
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+    // 沉浸式导航栏
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    // RxLifecycle
+    implementation('com.trello.rxlifecycle2:rxlifecycle-android:2.2.1') {
+        transitive = true
+        exclude group: 'com.android.support'
+        exclude group: 'io.reactivex.rxjava2'
+    }
+    implementation('com.trello.rxlifecycle2:rxlifecycle-components:2.2.1') {
+        transitive = true
+        exclude group: 'com.android.support'
+        exclude group: 'io.reactivex.rxjava2'
+    }
 }
