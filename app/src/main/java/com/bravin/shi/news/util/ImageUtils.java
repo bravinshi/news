@@ -36,7 +36,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.example.fkit.base.constant.MemoryConstants;
+import com.bravin.shi.news.constant.MemoryConstants;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

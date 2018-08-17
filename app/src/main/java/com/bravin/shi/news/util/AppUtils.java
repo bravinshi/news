@@ -19,9 +19,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.fkit.base.util.Utils.*;
-import static com.example.fkit.base.util.Utils.getActivityList;
-import static com.example.fkit.base.util.Utils.getApp;
+import static com.bravin.shi.news.util.Utils.*;
+
 
 /**
  * <pre>

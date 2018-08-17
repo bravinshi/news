@@ -15,7 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 
-import com.example.fkit.base.constant.PermissionConstants;
+import com.bravin.shi.news.constant.PermissionConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +23,6 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
-import static com.example.fkit.base.constant.PermissionConstants.Permission;
 
 /**
  * <pre>
@@ -114,7 +112,7 @@ public final class PermissionUtils {
      * @param permissions The permissions.
      * @return the single {@link PermissionUtils} instance
      */
-    public static PermissionUtils permission(@Permission final String... permissions) {
+    public static PermissionUtils permission(@PermissionConstants.Permission final String... permissions) {
         return new PermissionUtils(permissions);
     }
 

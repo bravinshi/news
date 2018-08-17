@@ -1,6 +1,6 @@
 package com.bravin.shi.news.util;
 
-import com.example.fkit.base.constant.RegexConstants;
+import com.bravin.shi.news.constant.RegexConstants;
 
 import java.util.ArrayList;
 import java.util.Collections;

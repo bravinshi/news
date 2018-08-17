@@ -3,7 +3,7 @@ package com.bravin.shi.news.util;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 
-import com.example.fkit.base.constant.TimeConstants;
+import com.bravin.shi.news.constant.TimeConstants;
 
 import java.text.DateFormat;
 import java.text.ParseException;

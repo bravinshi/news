@@ -10,8 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.example.fkit.base.constant.MemoryConstants;
-import com.example.fkit.base.constant.TimeConstants;
+import com.bravin.shi.news.constant.MemoryConstants;
+import com.bravin.shi.news.constant.TimeConstants;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
