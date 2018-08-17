@@ -13,6 +13,7 @@ import com.bravin.shi.news.R;
 import com.bravin.shi.news.base.interfas.IBaseView;
 import com.bravin.shi.news.util.KeyboardUtils;
 import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 
@@ -20,16 +21,12 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * created by bravin on 2018/5/20.
  */
 public abstract class BaseActivity extends RxAppCompatActivity implements IBaseView {
-    private Dialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         beforeSetContentView();
-        setContentView(R.layout.activity_base);
-        if (getLayoutId() != 0) {
-            LayoutInflater.from(this).inflate(getLayoutId(), (ViewGroup) findViewById(R.id.container), true);
-        }
+        setContentView(getLayoutId());
         initView(this, getWindow().getDecorView());
         onFinishInit();
         if (getPresenter() != null) getPresenter().init();
@@ -64,7 +61,6 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBaseV
     protected void onDestroy() {
         super.onDestroy();
 
-        dismissLoading();
         if (getPresenter() != null) getPresenter().onFinish();
     }
 
@@ -85,22 +81,5 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBaseV
      * 如有需要 请重写该方法
      */
     public void beforeSetContentView() {
-    }
-
-    public void showLoading() {
-        if (loadingDialog == null) {
-            ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("加载中...");
-            progressDialog.setIndeterminate(false);
-            loadingDialog = progressDialog;
-        }
-        if (!loadingDialog.isShowing()) {
-            loadingDialog.show();
-        }
-    }
-
-    public void dismissLoading() {
-        if (loadingDialog != null && loadingDialog.isShowing())
-            loadingDialog.dismiss();
     }
 }
