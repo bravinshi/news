@@ -1,19 +1,13 @@
 package com.bravin.shi.news.base.interfas.impl;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.bravin.shi.news.R;
 import com.bravin.shi.news.base.interfas.IBaseView;
 import com.bravin.shi.news.util.KeyboardUtils;
 import com.trello.rxlifecycle2.LifecycleProvider;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">news</string>
     <string name="hint_no_network">网络未连接</string>
+    <string name="text_register_account">注册账号</string>
+    <string name="text_register_by_phone">手机注册</string>
 </resources>
