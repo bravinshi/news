@@ -1,7 +1,7 @@
 package com.bravin.shi.news.account.ui;
 
 import com.bravin.shi.news.R;
-import com.bravin.shi.news.account.presenter.RegisterPresenter;
+import com.bravin.shi.news.account.presenter.ChooseRegisterPresenter;
 import com.bravin.shi.news.base.interfas.IBasePresenter;
 import com.bravin.shi.news.base.SupportBKActivity;
 import com.gyf.barlibrary.ImmersionBar;
@@ -9,13 +9,13 @@ import com.gyf.barlibrary.ImmersionBar;
 /**
  * created by bravin on 2018/8/17.
  */
-public class RegisterActivity extends SupportBKActivity {
-    private RegisterPresenter presenter;
+public class ChooseRegisterActivity extends SupportBKActivity {
+    private ChooseRegisterPresenter presenter;
     protected ImmersionBar immersionBar;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_register;
+        return R.layout.activity_choose_register;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class RegisterActivity extends SupportBKActivity {
                 .statusBarColor("#00000000");
         immersionBar.init();
 
-        presenter = new RegisterPresenter(this);
+        presenter = new ChooseRegisterPresenter(this);
     }
 
     @Override
