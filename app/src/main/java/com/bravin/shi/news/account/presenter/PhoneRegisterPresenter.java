@@ -1,16 +1,16 @@
 package com.bravin.shi.news.account.presenter;
 
-import com.bravin.shi.news.account.ui.ChooseRegisterActivity;
+import com.bravin.shi.news.account.ui.PhoneRegisterActivity;
 import com.bravin.shi.news.base.interfas.impl.BasePresenter;
 import com.bravin.shi.news.base.interfas.IBaseView;
 
 /**
- * created by bravin on 2018/8/17.
+ * created by bravin on 2018/8/30.
  */
-public class ChooseRegisterPresenter extends BasePresenter {
-    private ChooseRegisterActivity view;
+public class PhoneRegisterPresenter extends BasePresenter {
+    private PhoneRegisterActivity view;
 
-    public ChooseRegisterPresenter(ChooseRegisterActivity view) {
+    public PhoneRegisterPresenter(PhoneRegisterActivity view) {
         this.view = view;
     }
 

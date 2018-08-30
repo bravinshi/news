@@ -1,17 +1,26 @@
 package com.bravin.shi.news.account.ui;
 
+import android.view.View;
+import android.widget.TextView;
+
 import com.bravin.shi.news.R;
+import com.bravin.shi.news.account.AccountStarter;
 import com.bravin.shi.news.account.presenter.ChooseRegisterPresenter;
 import com.bravin.shi.news.base.interfas.IBasePresenter;
-import com.bravin.shi.news.base.SupportBKActivity;
+import com.bravin.shi.news.base.SupportBKAndIBActivity;
 import com.gyf.barlibrary.ImmersionBar;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * created by bravin on 2018/8/17.
  */
-public class ChooseRegisterActivity extends SupportBKActivity {
+public class ChooseRegisterActivity extends SupportBKAndIBActivity {
     private ChooseRegisterPresenter presenter;
-    protected ImmersionBar immersionBar;
+
+    @BindView(R.id.tv_register)
+    TextView mTextRegister;
 
     @Override
     public int getLayoutId() {
@@ -32,11 +41,10 @@ public class ChooseRegisterActivity extends SupportBKActivity {
         return presenter;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (immersionBar != null){
-            immersionBar.destroy();
+    @OnClick({R.id.tv_register, R.id.iv_vx, R.id.iv_qq, R.id.iv_vb})
+    public void onRegister(View v) {
+        if (v.getId() == R.id.tv_register){
+            AccountStarter.startPhoneRegisterActivity(v.getContext(), null);
         }
     }
 }
