@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.bravin.btoast.BToast;
 import com.bravin.shi.news.base.interfas.IBaseView;
 import com.bravin.shi.news.util.KeyboardUtils;
 import com.trello.rxlifecycle2.LifecycleProvider;
@@ -75,5 +76,31 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBaseV
      * 如有需要 请重写该方法
      */
     public void beforeSetContentView() {
+    }
+
+    public final void toast(CharSequence text, int duration) {
+        BToast.normal(getContext())
+                .text(text)
+                .duration(duration)
+                .show();
+    }
+
+    public final void toast(int textRes, int duration) {
+        BToast.normal(getContext())
+                .text(textRes)
+                .duration(duration)
+                .show();
+    }
+
+    public final void toast(CharSequence text) {
+        BToast.normal(getContext())
+                .text(text)
+                .show();
+    }
+
+    public final void toast(int textRes) {
+        BToast.normal(getContext())
+                .text(textRes)
+                .show();
     }
 }
