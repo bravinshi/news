@@ -30,7 +30,7 @@ public class ChooseRegisterActivity extends SupportBKAndIBActivity {
     @Override
     public void onFinishInit() {
         immersionBar = ImmersionBar.with(this)
-                .statusBarColor("#00000000");
+                .statusBarColor(R.color.statusBarColor);
         immersionBar.init();
 
         presenter = new ChooseRegisterPresenter(this);
@@ -46,5 +46,10 @@ public class ChooseRegisterActivity extends SupportBKAndIBActivity {
         if (v.getId() == R.id.tv_register){
             AccountStarter.startPhoneRegisterActivity(v.getContext(), null);
         }
+    }
+
+    @OnClick(R.id.view_close)
+    public void onClose() {
+        finish();
     }
 }

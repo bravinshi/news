@@ -30,7 +30,7 @@ dependencies {
     // constraint-layout
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     // BToast
-    implementation 'com.bravin.btoast:BToast:1.0.2'
+    implementation 'com.bravin.btoast:BToast:1.0.3'
     // ButterKnife
     implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"

@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/view_close"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:padding="5dp"
             android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_register"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:alpha="0.75"
+            android:alpha="0.85"
             android:layout_marginTop="115dp"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -80,14 +80,14 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_vx"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="#11FFFFFF"/>
+            android:background="#22FFFFFF"/>
 
         <ImageView
             android:id="@+id/iv_qq"
             app:layout_constraintTop_toBottomOf="@+id/iv_vx"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:alpha="0.75"
+            android:alpha="0.85"
             android:layout_width="55dp"
             android:layout_marginTop="25dp"
             android:layout_height="55dp"
@@ -100,7 +100,7 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_qq"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="#11FFFFFF"/>
+            android:background="#22FFFFFF"/>
 
         <ImageView
             android:id="@+id/iv_vb"
@@ -111,7 +111,7 @@
             android:layout_marginTop="25dp"
             android:layout_height="55dp"
             android:src="@mipmap/vb"
-            android:alpha="0.75" />
+            android:alpha="0.85" />
 
     </android.support.constraint.ConstraintLayout>
 

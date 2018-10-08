@@ -1,5 +1,6 @@
 package com.bravin.shi.news.account.ui;
 
+import android.graphics.drawable.TransitionDrawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -29,7 +30,7 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
     @BindView(R.id.et_phone_number)
     EditText mEditPhone;
 
-    private final int PHONE_NUMBER_LENGTH = 11;
+    private final static int PHONE_NUMBER_LENGTH = 11;
 
     @Override
     public int getLayoutId() {
@@ -39,7 +40,7 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
     @Override
     public void onFinishInit() {
         immersionBar = ImmersionBar.with(this)
-                .statusBarColor("#00000000");
+                .statusBarColor(R.color.statusBarColor);
         immersionBar.init();
 
         initButtonStyle();
@@ -57,7 +58,6 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
         }
 
         // TODO 发送验证码
-
     }
 
     @Override
@@ -91,7 +91,7 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() == 11) {
+                if (s.length() == PHONE_NUMBER_LENGTH) {
                     getVerifyCode.setEnabled(true);
                 } else {
                     getVerifyCode.setEnabled(false);
@@ -103,5 +103,10 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
 
             }
         });
+    }
+
+    @OnClick(R.id.view_back)
+    public void onBack() {
+        finish();
     }
 }
