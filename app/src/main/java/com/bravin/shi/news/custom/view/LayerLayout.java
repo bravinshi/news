@@ -37,6 +37,12 @@ public class LayerLayout extends FrameLayout {
 
     private int currentLayer;
 
+    private int mAlpha;
+    private int mAlphaFrom;
+    private int mAlphaTo;
+    private int mLayerFrom;
+    private int mLayerTo;
+
     public void setLayers(@LayoutRes int[] layers) {
         int length = layers.length;
         if (length == 0) {
@@ -49,13 +55,16 @@ public class LayerLayout extends FrameLayout {
         this.layers = layers;
         layerState = new int[length];
         currentLayer = 0;
+        // inflate第一个view
+        addLayer(0);
     }
 
-    private void inflateLayer(int index) {
+    private void addLayer(int index) {
         if (layerState[index] == 0) {
             View layer = inflate(getContext(), layers[index], null);
             LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
+            layer.setVisibility(INVISIBLE);
             addView(layer, getInsertIndex(index), lp);
             layerState[index] = 1;
         }
