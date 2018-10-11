@@ -1,6 +1,6 @@
 package com.bravin.shi.news.account.ui;
 
-import android.graphics.drawable.TransitionDrawable;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -12,6 +12,7 @@ import com.bravin.shi.news.R;
 import com.bravin.shi.news.account.presenter.PhoneRegisterPresenter;
 import com.bravin.shi.news.base.SupportBKAndIBActivity;
 import com.bravin.shi.news.base.interfas.IBasePresenter;
+import com.bravin.shi.news.custom.view.TransitionLayout;
 import com.bravin.shi.news.util.StringUtils;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -24,13 +25,28 @@ import butterknife.OnClick;
 public class PhoneRegisterActivity extends SupportBKAndIBActivity {
 
     private PhoneRegisterPresenter presenter;
-    @BindView(R.id.tv_get_verify_code)
     TextView getVerifyCode;
 
-    @BindView(R.id.et_phone_number)
     EditText mEditPhone;
 
+    TextView mTextRetrieve;
+
+    TextView mTextJoin;
+
+    TextView mTextPhoneNumber;
+
+    EditText mEditVerificationCode;
+
+    EditText mEditPassword;
+
+    private boolean showFirstLayer = true;
+
+    @BindView(R.id.tl_input_area)
+    TransitionLayout mTransLayout;
+
     private final static int PHONE_NUMBER_LENGTH = 11;
+
+    private CountDownTimer mTimer;
 
     @Override
     public int getLayoutId() {
@@ -43,12 +59,33 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
                 .statusBarColor(R.color.statusBarColor);
         immersionBar.init();
 
+        int[] layers = new int[]{R.layout.inner_register_input_phone_number,
+                R.layout.inner_register_input_verification_code};
+
+        mTransLayout.setLayers(layers);
+
+        View layer1 = mTransLayout.getLayer(0);
+        getVerifyCode = layer1.findViewById(R.id.tv_get_verify_code);
+        getVerifyCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onGetVerificationCode(v);
+            }
+        });
+        mEditPhone = layer1.findViewById(R.id.et_phone_number);
+
+        View layer2 = mTransLayout.getLayer(1);
+        mTextRetrieve = layer2.findViewById(R.id.tv_retrieve);
+        mTextJoin = layer2.findViewById(R.id.tv_join);
+        mTextPhoneNumber = layer2.findViewById(R.id.tv_phone_number);
+        mEditVerificationCode = layer2.findViewById(R.id.rt_input_verification_code);
+        mEditPassword = layer2.findViewById(R.id.rt_input_password);
+
         initButtonStyle();
 
         presenter = new PhoneRegisterPresenter(this);
     }
 
-    @OnClick(R.id.tv_get_verify_code)
     public void onGetVerificationCode(View v) {
         String phone = mEditPhone.getText().toString();
         // 检测手机号格式
@@ -56,8 +93,19 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
             BToast.error(getContext()).text(R.string.hint_input_right_phone_format).show();
             return;
         }
-
         // TODO 发送验证码
+
+        showFirstLayer = false;
+        mTextPhoneNumber.setText(phone);
+        startCounting();
+        mTransLayout.showLayer(1);
+        // 弹出输入法
+        mTransLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               showSoftInput(mEditVerificationCode);
+            }
+        }, mTransLayout.getDuration());
     }
 
     @Override
@@ -105,8 +153,49 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
         });
     }
 
+    private void startCounting() {
+        mTextRetrieve.setEnabled(false);
+        mTextRetrieve.setTextColor(PhoneRegisterActivity.this.
+                getResources().getColor(R.color.notEnable));
+        if (mTimer == null) {
+            mTimer = new CountDownTimer(60 * 1000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    int remainingTime = (int) (millisUntilFinished / 1000);
+                    String hint = PhoneRegisterActivity.this.getString(R.string.text_retrieve) +
+                            "(" + remainingTime + ")";
+                    mTextRetrieve.setText(hint);
+                }
+
+                @Override
+                public void onFinish() {
+                    mTextRetrieve.setEnabled(true);
+                    mTextRetrieve.setText(PhoneRegisterActivity.this.
+                            getString(R.string.text_retrieve));
+                    mTextRetrieve.setTextColor(PhoneRegisterActivity.this.
+                            getResources().getColor(R.color.center));
+                }
+            };
+        }
+
+        mTimer.start();
+    }
+
     @OnClick(R.id.view_back)
     public void onBack() {
-        finish();
+        if (showFirstLayer) {
+            finish();
+        } else {
+            mTransLayout.showLayer(0);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 }

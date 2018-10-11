@@ -6,8 +6,8 @@ import android.widget.TextView;
 import com.bravin.shi.news.R;
 import com.bravin.shi.news.account.AccountStarter;
 import com.bravin.shi.news.account.presenter.ChooseRegisterPresenter;
-import com.bravin.shi.news.base.interfas.IBasePresenter;
 import com.bravin.shi.news.base.SupportBKAndIBActivity;
+import com.bravin.shi.news.base.interfas.IBasePresenter;
 import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.BindView;

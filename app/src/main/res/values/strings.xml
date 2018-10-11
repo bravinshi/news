@@ -8,4 +8,11 @@
     <string name="text_get_verification_code">获取验证码</string>
     <string name="hint_input_phone_format">请输入11位手机号</string>
     <string name="hint_input_right_phone_format">请输入正确的手机号</string>
+    <string name="hint_input_verification_code">请输入验证码</string>
+    <string name="hint_input_password">至少8位的密码,至多16位</string>
+    <string name="text_verification_code">验证码</string>
+    <string name="text_password">密码</string>
+    <string name="text_join_us">即刻加入</string>
+    <string name="text_verification_code_has_sent">验证码已发送至</string>
+    <string name="text_retrieve">重新获取</string>
 </resources>
