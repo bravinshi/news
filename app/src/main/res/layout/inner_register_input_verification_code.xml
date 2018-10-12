@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:background="@android:color/transparent"
-        android:hint="@string/hint_input_password"
+        android:hint="@string/hint_password"
         android:inputType="textPassword"
         android:maxLength="16"
         android:padding="5dp"

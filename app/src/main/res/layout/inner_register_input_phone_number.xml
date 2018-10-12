@@ -22,7 +22,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ic_app_icon"
         app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="20sp"
-        android:textStyle="bold"
         android:textColor="@color/center"
         android:layout_marginTop="40dp"
         android:layout_marginStart="45dp"/>

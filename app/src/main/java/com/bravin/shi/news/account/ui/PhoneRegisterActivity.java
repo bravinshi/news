@@ -48,6 +48,9 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
 
     private CountDownTimer mTimer;
 
+    private final int verificationCodeLength = 6;
+    private final int passwordMinLength = 8;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_phone_register;
@@ -81,12 +84,56 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
         mEditVerificationCode = layer2.findViewById(R.id.rt_input_verification_code);
         mEditPassword = layer2.findViewById(R.id.rt_input_password);
 
+        mTextRetrieve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRetrieve(v);
+            }
+        });
+
+        mTextJoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onJoin(v);
+            }
+        });
+
         initButtonStyle();
 
         presenter = new PhoneRegisterPresenter(this);
     }
 
-    public void onGetVerificationCode(View v) {
+    private void onRetrieve(View v) {
+        // TODO 发送验证码
+        BToast.success(getContext()).text(R.string.text_verification_code_has_retrieve).show();
+        startCounting();
+    }
+
+    private void onJoin(View v) {
+        String vc = mEditVerificationCode.getText().toString().trim();
+
+        if (StringUtils.isTrimEmpty(vc)) {
+            BToast.error(getContext()).text(R.string.hint_input_verification_code).show();
+            return;
+        }
+        if (vc.length() < verificationCodeLength) {
+            BToast.error(getContext()).text(R.string.text_verification_code_length_six).show();
+            return;
+        }
+        String password = mEditPassword.getText().toString().trim();
+        if (StringUtils.isTrimEmpty(password)) {
+            BToast.error(getContext()).text(R.string.text_input_password).show();
+            return;
+        }
+        if (password.length() < passwordMinLength) {
+            BToast.error(getContext()).text(R.string.text_password_min_length_eight).show();
+            return;
+        }
+
+        presenter.join(vc, password);
+    }
+
+    private void onGetVerificationCode(View v) {
         String phone = mEditPhone.getText().toString();
         // 检测手机号格式
         if (!StringUtils.isPhoneNumber(phone)) {
@@ -94,6 +141,7 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
             return;
         }
         // TODO 发送验证码
+
 
         showFirstLayer = false;
         mTextPhoneNumber.setText(phone);
@@ -187,6 +235,7 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
             finish();
         } else {
             mTransLayout.showLayer(0);
+            showFirstLayer = true;
         }
     }
 
