@@ -18,7 +18,7 @@ public class RetrofitAgent {
     }
 
     static {
-        String baseUrl = "http://172.16.8.28:8080";
+        String baseUrl = "http://172.16.8.28:8892";
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {

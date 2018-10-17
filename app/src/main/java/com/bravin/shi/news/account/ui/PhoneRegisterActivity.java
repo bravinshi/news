@@ -130,7 +130,7 @@ public class PhoneRegisterActivity extends SupportBKAndIBActivity {
             return;
         }
 
-        presenter.join(vc, password);
+        presenter.join(mTextPhoneNumber.getText().toString(), vc, password);
     }
 
     private void onGetVerificationCode(View v) {
